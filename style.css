@@ -1,0 +1,30 @@
+body {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.head {
+
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.container {
+
+    width: 1215px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.tile {
+
+    width: 300px;
+    background-color: black;
+    height: 250px;
+    display: inline-block;
+    border-radius: 10px;
+}
