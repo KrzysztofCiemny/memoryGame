@@ -34,4 +34,5 @@ body {
 
     background-color: black;
     display: inline-block;
+    cursor: pointer;
 }
