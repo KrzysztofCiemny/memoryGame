@@ -1,13 +1,36 @@
 let container = document.querySelector(".container"),
-    tile = document.createElement("div");
+    tile;
+    tiles = [];
 
-tile.classList.add("tile");
-container.appendChild(tile);
+function makeTiles() {
 
-function turnTail() {
+    for(let i = 0; i < 2; i++) {
 
-    tile.style.backgroundColor = "green";
+        tile = document.createElement("div");
 
+        tile.classList.add("tile");
+
+        tiles.push(tile);
+
+        container.appendChild(tiles[i]);
+
+    }
 }
+makeTiles();
 
-tile.addEventListener("click", turnTail, false);
+// function turnTail() {
+
+//     tile.style.backgroundColor = "green";
+
+// }
+
+// for(let i = 0; i < tiles.length; i++) {
+
+//     tile.addEventListener("click", turnTail, false);
+
+// }
+
+
+
+console.log(tiles);
+console.log(tile);
