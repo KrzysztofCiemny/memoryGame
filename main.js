@@ -6,7 +6,7 @@ container.appendChild(tile);
 
 function turnTail() {
 
-    alert("eloo");
+    tile.style.backgroundColor = "green";
 
 }
 
