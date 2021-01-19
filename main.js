@@ -4,33 +4,29 @@ let container = document.querySelector(".container"),
 
 function makeTiles() {
 
-    for(let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
 
         tile = document.createElement("div");
 
         tile.classList.add("tile");
+        tile.addEventListener("click", turnTail, false);
 
         tiles.push(tile);
 
         container.appendChild(tiles[i]);
 
     }
+
 }
 makeTiles();
 
-// function turnTail() {
+function turnTail(e) {
 
-//     tile.style.backgroundColor = "green";
+    let target = e.target;
 
-// }
+    target.style.backgroundColor = "green";
 
-// for(let i = 0; i < tiles.length; i++) {
+}
 
-//     tile.addEventListener("click", turnTail, false);
-
-// }
-
-
-
-console.log(tiles);
-console.log(tile);
+// console.log(tiles);
+// console.log(tile);
