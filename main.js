@@ -1,32 +1,30 @@
 let container = document.querySelector(".container"),
-    tile;
+    tile = false,
     tiles = [];
 
-function makeTiles() {
+for (let i = 0; i < 4; i++) {
 
-    for (let i = 0; i < 2; i++) {
+    tile = document.createElement("div");
 
-        tile = document.createElement("div");
+    tile.classList.add("tile");
+    tile.addEventListener("click", turnTail, false);
 
-        tile.classList.add("tile");
-        tile.addEventListener("click", turnTail, false);
+    tiles.push(tile);
 
-        tiles.push(tile);
-
-        container.appendChild(tiles[i]);
-
-    }
+    container.appendChild(tiles[i]);
 
 }
-makeTiles();
 
 function turnTail(e) {
 
-    let target = e.target;
+    let target = e.target,
+        index = tiles.indexOf(target);
 
     target.style.backgroundColor = "green";
 
+    tile = true;
+
+    console.log(index);
+
 }
 
-// console.log(tiles);
-// console.log(tile);
