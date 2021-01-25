@@ -1,8 +1,10 @@
 let container = document.querySelector(".container"),
-    tile = false,
+    tile,
     tiles = [],
-    tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", ],
-    turnTailCalls = 0;
+    tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')" ],
+    turnTailCalls = 0,
+    firstClick,
+    secondClick;
 
 for (let i = 0; i < 4; i++) {
 
@@ -24,12 +26,29 @@ function turnTail(e) {
 
     turnTailCalls++;
 
+    if (turnTailCalls == 1) {
+
         target.style.backgroundColor = "white";
-        target.style.backgroundImage = tilesImg[index];
+        firstClick = target.style.backgroundImage = tilesImg[index];
+
+    } else if (turnTailCalls == 2) {
+
+        target.style.backgroundColor = "white";
+        secondClick = target.style.backgroundImage = tilesImg[index];
+
+        if (firstClick == secondClick) {
+
+            alert("skrrt");
+
+        } else {
 
 
+
+        }
+
+    }
     console.log(turnTailCalls);
-
+    // console.log(index);
 
 }
 
