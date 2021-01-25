@@ -3,8 +3,8 @@ let container = document.querySelector(".container"),
     tiles = [],
     tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')" ],
     turnTailCalls = 0,
-    firstClick,
-    secondClick,
+    firstClickImage,
+    secondClickImage,
     target1,
     target2;
 
@@ -30,22 +30,27 @@ function turnTail(e) {
 
     if (turnTailCalls == 1) {
 
-        firstClick = target.style.backgroundImage = tilesImg[index];
+        firstClickImage = target.style.backgroundImage = tilesImg[index];
         target1 = target;
 
     } else if (turnTailCalls == 2) {
 
-        secondClick = target.style.backgroundImage = tilesImg[index];
+        secondClickImage = target.style.backgroundImage = tilesImg[index];
         target2 = target;
 
-        if (firstClick == secondClick) {
+        if (firstClickImage == secondClickImage) {
 
-            alert("skrrt");
+            target1.style.opacity = 0;
+            target2.style.opacity = 0;
+
+            turnTailCalls = 0;
 
         } else {
 
             target1.style.backgroundImage = null;
             target2.style.backgroundImage = null;
+
+            turnTailCalls = 0;
 
         }
 
