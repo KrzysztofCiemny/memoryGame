@@ -40,20 +40,28 @@ function turnTail(e) {
 
         if (firstCardImg == secondCardImg) {
 
-            target1.classList.add("hit");
-            target2.classList.add("hit");
+            setTimeout(function() {
 
-            target1.removeEventListener("click", turnTail, false);
-            target2.removeEventListener("click", turnTail, false);
+                target1.classList.add("hit");
+                target2.classList.add("hit");
 
-            turnTailCalls = 0;
+                target1.removeEventListener("click", turnTail, false);
+                target2.removeEventListener("click", turnTail, false);
+
+                turnTailCalls = 0;
+
+            }, 1500);
 
         } else {
 
-            target1.style.backgroundImage = null;
-            target2.style.backgroundImage = null;
+            setTimeout(function() {
 
-            turnTailCalls = 0;
+                target1.style.backgroundImage = null;
+                target2.style.backgroundImage = null;
+
+                turnTailCalls = 0;
+
+            }, 1500);
 
         }
 
