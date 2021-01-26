@@ -1,12 +1,12 @@
 let container = document.querySelector(".container"),
     tile,
     tiles = [],
-    tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')" ],
+    tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')"],
     turnTailCalls = 0,
-    firstClickImage,
-    secondClickImage,
+    firstCardImg,
+    secondCardImg,
     target1,
-    target2;
+    tarCard
 
 for (let i = 0; i < 4; i++) {
 
@@ -30,18 +30,21 @@ function turnTail(e) {
 
     if (turnTailCalls == 1) {
 
-        firstClickImage = target.style.backgroundImage = tilesImg[index];
+        firstCardImg = target.style.backgroundImage = tilesImg[index];
         target1 = target;
 
     } else if (turnTailCalls == 2) {
 
-        secondClickImage = target.style.backgroundImage = tilesImg[index];
+        secondCardImg = target.style.backgroundImage = tilesImg[index];
         target2 = target;
 
-        if (firstClickImage == secondClickImage) {
+        if (firstCardImg == secondCardImg) {
 
-            target1.style.opacity = 0;
-            target2.style.opacity = 0;
+            target1.classList.add("hit");
+            target2.classList.add("hit");
+
+            target1.removeEventListener("click", turnTail, false);
+            target2.removeEventListener("click", turnTail, false);
 
             turnTailCalls = 0;
 
