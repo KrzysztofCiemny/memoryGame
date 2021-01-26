@@ -50,7 +50,7 @@ function turnTail(e) {
 
                 turnTailCalls = 0;
 
-            }, 1500);
+            }, 200);
 
         } else {
 
@@ -58,6 +58,8 @@ function turnTail(e) {
 
                 target1.style.backgroundImage = null;
                 target2.style.backgroundImage = null;
+                // target1.classList.add("miss");
+                // target2.classList.add("miss");
 
                 turnTailCalls = 0;
 

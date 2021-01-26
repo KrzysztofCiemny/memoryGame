@@ -41,5 +41,11 @@ body {
 
     opacity: 0;
     cursor: auto;
+    transition: all 0.7s ease-in-out;
+}
 
+.miss {
+
+    background-image: none;
+    transition: all 0.7s ease-in-out;
 }
