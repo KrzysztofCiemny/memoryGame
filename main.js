@@ -6,7 +6,9 @@ let container = document.querySelector(".container"),
     firstCardImg,
     secondCardImg,
     target1,
-    tarCard
+    target2,
+    trials = 0;
+
 
 for (let i = 0; i < 4; i++) {
 
@@ -24,7 +26,8 @@ for (let i = 0; i < 4; i++) {
 function turnTail(e) {
 
     let target = e.target,
-        index = tiles.indexOf(target);
+        index = tiles.indexOf(target),
+        trialsCounter = document.querySelector("#trial");
 
     turnTailCalls++;
 
@@ -38,6 +41,7 @@ function turnTail(e) {
         secondCardImg = target.style.backgroundImage = tilesImg[index];
         target2 = target;
 
+
         if (firstCardImg == secondCardImg) {
 
             setTimeout(function() {
@@ -50,7 +54,7 @@ function turnTail(e) {
 
                 turnTailCalls = 0;
 
-            }, 200);
+            }, 300);
 
         } else {
 
@@ -58,8 +62,6 @@ function turnTail(e) {
 
                 target1.style.backgroundImage = null;
                 target2.style.backgroundImage = null;
-                // target1.classList.add("miss");
-                // target2.classList.add("miss");
 
                 turnTailCalls = 0;
 
@@ -67,9 +69,10 @@ function turnTail(e) {
 
         }
 
+        trials++;
+        trialsCounter.innerHTML = "trials: " + trials;
+
     }
-    console.log(turnTailCalls);
-    // console.log(index);
 
 }
 

@@ -10,10 +10,28 @@ body {
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
+
+
+}
+
+.title {
+
+    width: 80%;
     font-size: 50px;
     text-transform: uppercase;
     font-weight: 700;
     color:cornflowerblue;
+    display: inline-block;
+
+}
+
+#trial {
+
+    width: 19%;
+    display: inline-block;
+    text-align: left;
+    font-size: 30px;
+    text-transform: uppercase;
 
 }
 
@@ -41,11 +59,5 @@ body {
 
     opacity: 0;
     cursor: auto;
-    transition: all 0.7s ease-in-out;
-}
-
-.miss {
-
-    background-image: none;
-    transition: all 0.7s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
