@@ -9,17 +9,20 @@ let container = document.querySelector(".container"),
     target2,
     trials = 0;
 
+function  {
 
-for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
 
-    tile = document.createElement("div");
+        tile = document.createElement("div");
 
-    tile.classList.add("tile");
-    tile.addEventListener("click", turnTail, false);
+        tile.classList.add("tile");
+        tile.addEventListener("click", turnTail, false);
 
-    tiles.push(tile);
+        tiles.push(tile);
 
-    container.appendChild(tiles[i]);
+        container.appendChild(tiles[i]);
+
+    }
 
 }
 
