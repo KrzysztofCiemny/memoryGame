@@ -25,18 +25,22 @@ function howMuchCards(e) {
 
     if(index == 0) {
 
+        container.textContent = '';
         showCards(4);
 
-    }else if(index == 1) {
+    } else if(index == 1) {
 
+        container.textContent = '';
         showCards(8);
 
-    }else if(index == 2) {
+    } else if(index == 2) {
 
+        container.textContent = '';
         showCards(12);
 
-    }else if(index == 3) {
+    } else if(index == 3) {
 
+        container.textContent = '';
         showCards(16);
 
     }
@@ -64,7 +68,7 @@ function showCards(numberOf) {
 function turnCard(e) {
 
     let target = e.target,
-        index = tiles.indexOf(target),
+        index = cards.indexOf(target),
         trialsCounter = document.querySelector("#trial");
 
     turnCardCalls++;
