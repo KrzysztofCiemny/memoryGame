@@ -1,47 +1,82 @@
 let container = document.querySelector(".container"),
-    tile,
-    tiles = [],
-    tilesImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')"],
-    turnTailCalls = 0,
+    buttons = document.querySelectorAll("button"),
+    card,
+    cards = [],
+    cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')"],
+    turnCardCalls = 0,
     firstCardImg,
     secondCardImg,
     target1,
     target2,
     trials = 0;
 
-function  {
 
-    for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 4; i++) {
 
-        tile = document.createElement("div");
+    buttons[i].addEventListener("click", howMuchCards, false);
 
-        tile.classList.add("tile");
-        tile.addEventListener("click", turnTail, false);
+}
 
-        tiles.push(tile);
+function howMuchCards(e) {
 
-        container.appendChild(tiles[i]);
+    let buttonsArr = Array.from(buttons),
+        target = e.target,
+        index = buttonsArr.indexOf(target);
+
+    if(index == 0) {
+
+        showCards(4);
+
+    }else if(index == 1) {
+
+        showCards(8);
+
+    }else if(index == 2) {
+
+        showCards(12);
+
+    }else if(index == 3) {
+
+        showCards(16);
 
     }
 
 }
 
-function turnTail(e) {
+
+function showCards(numberOf) {
+
+    for (let i = 0; i < numberOf; i++) {
+
+        card = document.createElement("div");
+
+        card.classList.add("card");
+        card.addEventListener("click", turnCard, false);
+
+        cards.push(card);
+
+        container.appendChild(cards[i]);
+
+    }
+
+}
+
+function turnCard(e) {
 
     let target = e.target,
         index = tiles.indexOf(target),
         trialsCounter = document.querySelector("#trial");
 
-    turnTailCalls++;
+    turnCardCalls++;
 
-    if (turnTailCalls == 1) {
+    if (turnCardCalls == 1) {
 
-        firstCardImg = target.style.backgroundImage = tilesImg[index];
+        firstCardImg = target.style.backgroundImage = cardsImg[index];
         target1 = target;
 
-    } else if (turnTailCalls == 2) {
+    } else if (turnCardCalls == 2) {
 
-        secondCardImg = target.style.backgroundImage = tilesImg[index];
+        secondCardImg = target.style.backgroundImage = cardsImg[index];
         target2 = target;
 
 
@@ -52,10 +87,10 @@ function turnTail(e) {
                 target1.classList.add("hit");
                 target2.classList.add("hit");
 
-                target1.removeEventListener("click", turnTail, false);
-                target2.removeEventListener("click", turnTail, false);
+                target1.removeEventListener("click", turnCard, false);
+                target2.removeEventListener("click", turnCard, false);
 
-                turnTailCalls = 0;
+                turnCardCalls = 0;
 
             }, 300);
 
@@ -66,7 +101,7 @@ function turnTail(e) {
                 target1.style.backgroundImage = null;
                 target2.style.backgroundImage = null;
 
-                turnTailCalls = 0;
+                turnCardCalls = 0;
 
             }, 1500);
 
