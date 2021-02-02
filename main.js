@@ -2,7 +2,7 @@ let container = document.querySelector(".container"),
     buttons = document.querySelectorAll("button"),
     card,
     cards = [],
-    cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')"],
+    cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
     turnCardCalls = 0,
     firstCardImg,
     secondCardImg,
@@ -46,7 +46,6 @@ function howMuchCards(e) {
     }
 
 }
-
 
 function showCards(numberOf) {
 
