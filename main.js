@@ -5,6 +5,7 @@ let container = document.querySelector(".container"),
     cardsImg1 = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
     cardsImg2 = [...cardsImg1],
     cardsImg = cardsImg1.concat(cardsImg2),
+    shuffleCardsImg = [],
     turnCardCalls = 0,
     firstCardImg,
     secondCardImg,
@@ -12,7 +13,6 @@ let container = document.querySelector(".container"),
     target2,
     trials = 0;
 
-    console.log(cardsImg);
 for (let i = 0; i < 4; i++) {
 
     buttons[i].addEventListener("click", howMuchCards, false);
@@ -63,6 +63,8 @@ function showCards(numberOf) {
         container.appendChild(cards[i]);
 
     }
+
+    shuffleCardsImg = cardsImg.sort(() => Math.random() - 0.5);
 
 }
 
