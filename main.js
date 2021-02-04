@@ -2,9 +2,7 @@ let container = document.querySelector(".container"),
     button = document.querySelector("button"),
     card,
     cards = [],
-    cardsImg1 = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
-    cardsImg2 = [...cardsImg1],
-    cardsImg = cardsImg1.concat(cardsImg2),
+    cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
     shuffleCardsImg = [],
     turnCardCalls = 0,
     firstCardImg,
@@ -15,12 +13,19 @@ let container = document.querySelector(".container"),
 
 button.addEventListener("click", howMuchCards, false);
 
-function howMuchCards(e) {
+function howMuchCards() {
+
+    let startCardsImg1 = cardsImg.slice(0, 2);
+        startCardsImg2 = [...startCardsImg1];
+        startCardsImg = startCardsImg1.concat(startCardsImg2);
 
     container.textContent = '';
     showCards(4);
-
+console.log(startCardsImg1);
+console.log(startCardsImg2);
+console.log(startCardsImg);
 }
+
 
 function showCards(numberOf) {
 
@@ -51,12 +56,12 @@ function turnCard(e) {
 
     if (turnCardCalls == 1) {
 
-        firstCardImg = target.style.backgroundImage = cardsImg[index];
+        firstCardImg = target.style.backgroundImage = startCardsImg[index];
         target1 = target;
 
     } else if (turnCardCalls == 2) {
 
-        secondCardImg = target.style.backgroundImage = cardsImg[index];
+        secondCardImg = target.style.backgroundImage = startCardsImg[index];
         target2 = target;
 
 
