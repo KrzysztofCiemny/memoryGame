@@ -9,7 +9,8 @@ let container = document.querySelector(".container"),
     secondCardImg,
     target1,
     target2,
-    trials = 0;
+    trials = 0,
+    cardsHit = 0;
 
 button.addEventListener("click", howMuchCards, false);
 
@@ -21,9 +22,7 @@ function howMuchCards() {
 
     container.textContent = '';
     showCards(4);
-console.log(startCardsImg1);
-console.log(startCardsImg2);
-console.log(startCardsImg);
+
 }
 
 
@@ -78,6 +77,8 @@ function turnCard(e) {
                 turnCardCalls = 0;
 
             }, 300);
+
+            cardsHit++;
 
         } else {
 
