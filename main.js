@@ -1,5 +1,5 @@
 let container = document.querySelector(".container"),
-    buttons = document.querySelectorAll("button"),
+    button = document.querySelector("button"),
     card,
     cards = [],
     cardsImg1 = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
@@ -13,43 +13,18 @@ let container = document.querySelector(".container"),
     target2,
     trials = 0;
 
-for (let i = 0; i < 4; i++) {
-
-    buttons[i].addEventListener("click", howMuchCards, false);
-
-}
+button.addEventListener("click", howMuchCards, false);
 
 function howMuchCards(e) {
 
-    let buttonsArr = Array.from(buttons),
-        target = e.target,
-        index = buttonsArr.indexOf(target);
-
-    if(index == 0) {
-
-        container.textContent = '';
-        showCards(4);
-
-    } else if(index == 1) {
-
-        container.textContent = '';
-        showCards(8);
-
-    } else if(index == 2) {
-
-        container.textContent = '';
-        showCards(12);
-
-    } else if(index == 3) {
-
-        container.textContent = '';
-        showCards(16);
-
-    }
+    container.textContent = '';
+    showCards(4);
 
 }
 
 function showCards(numberOf) {
+
+    // shuffleCardsImg = cardsImg.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < numberOf; i++) {
 
@@ -63,8 +38,6 @@ function showCards(numberOf) {
         container.appendChild(cards[i]);
 
     }
-
-    shuffleCardsImg = cardsImg.sort(() => Math.random() - 0.5);
 
 }
 
