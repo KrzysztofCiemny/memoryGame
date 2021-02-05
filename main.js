@@ -3,7 +3,7 @@ let container = document.querySelector(".container"),
     button,
     card,
     cards = [],
-    cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
+    img = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
     shuffleCardsImg = [],
     turnCardCalls = 0,
     firstCardImg,
@@ -18,9 +18,9 @@ startButton.addEventListener("click", howMuchCards, false);
 
 function howMuchCards() {
 
-    let buttonCardsImg1 = cardsImg.slice(0, 2);
-        buttonCardsImg2 = [...buttonCardsImg1];
-        buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+    let cardsImg1 = img.slice(0, 2);
+        cardsImg2 = [...cardsImg1];
+        cardsImg = cardsImg1.concat(cardsImg2);
 
     container.textContent = '';
     showCards(4);
@@ -56,12 +56,12 @@ function turnCard(e) {
 
     if (turnCardCalls == 1) {
 
-        firstCardImg = target.style.backgroundImage = buttonCardsImg[index];
+        firstCardImg = target.style.backgroundImage = cardsImg[index];
         target1 = target;
 
     } else if (turnCardCalls == 2) {
 
-        secondCardImg = target.style.backgroundImage = buttonCardsImg[index];
+        secondCardImg = target.style.backgroundImage = cardsImg[index];
         target2 = target;
 
 
@@ -112,25 +112,25 @@ function turnCard(e) {
 
             if(cardsHit1 == 2) {
 
-                let buttonCardsImg1 = cardsImg.slice(0, 4);
-                    buttonCardsImg2 = [...buttonCardsImg1];
-                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+                let cardsImg1 = img.slice(0, 4);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
                 showCards(8);
 
             } else if(cardsHit1 == 4) {
 
-                let buttonCardsImg1 = cardsImg.slice(0, 6);
-                    buttonCardsImg2 = [...buttonCardsImg1];
-                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+                let cardsImg1 = img.slice(0, 6);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
                 showCards(12);
 
             } else if(cardsHit1 == 6) {
 
-                let buttonCardsImg1 = cardsImg.slice(0, 8);
-                    buttonCardsImg2 = [...buttonCardsImg1];
-                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+                let cardsImg1 = img.slice(0, 8);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
                 showCards(16);
 
