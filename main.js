@@ -11,15 +11,16 @@ let container = document.querySelector(".container"),
     target1,
     target2,
     trials = 0,
-    cardsHit = 0;
+    cardsHit = 0,
+    cardsHit1 = 0;
 
 startButton.addEventListener("click", howMuchCards, false);
 
 function howMuchCards() {
 
-    let startCardsImg1 = cardsImg.slice(0, 2);
-        startCardsImg2 = [...startCardsImg1];
-        startCardsImg = startCardsImg1.concat(startCardsImg2);
+    let buttonCardsImg1 = cardsImg.slice(0, 2);
+        buttonCardsImg2 = [...buttonCardsImg1];
+        buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
 
     container.textContent = '';
     showCards(4);
@@ -55,12 +56,12 @@ function turnCard(e) {
 
     if (turnCardCalls == 1) {
 
-        firstCardImg = target.style.backgroundImage = startCardsImg[index];
+        firstCardImg = target.style.backgroundImage = buttonCardsImg[index];
         target1 = target;
 
     } else if (turnCardCalls == 2) {
 
-        secondCardImg = target.style.backgroundImage = startCardsImg[index];
+        secondCardImg = target.style.backgroundImage = buttonCardsImg[index];
         target2 = target;
 
 
@@ -79,6 +80,7 @@ function turnCard(e) {
             }, 300);
 
             cardsHit++;
+            cardsHit1++;
 
         } else {
 
@@ -101,10 +103,40 @@ function turnCard(e) {
     if(cardsHit == 2 && 4 && 6) {
 
         container.innerHTML = '';
+        cardsHit = 0;
 
         button = document.createElement("BUTTON");
-        button.addEventListener("click", howMuchCards, false);
         button.innerText = "Next lvl";
+
+        button.addEventListener("click", function() {
+
+            if(cardsHit1 == 2) {
+
+                let buttonCardsImg1 = cardsImg.slice(0, 4);
+                    buttonCardsImg2 = [...buttonCardsImg1];
+                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+
+                showCards(8);
+
+            } else if(cardsHit1 == 4) {
+
+                let buttonCardsImg1 = cardsImg.slice(0, 6);
+                    buttonCardsImg2 = [...buttonCardsImg1];
+                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+
+                showCards(12);
+
+            } else if(cardsHit1 == 6) {
+
+                let buttonCardsImg1 = cardsImg.slice(0, 8);
+                    buttonCardsImg2 = [...buttonCardsImg1];
+                    buttonCardsImg = buttonCardsImg1.concat(buttonCardsImg2);
+
+                showCards(16);
+
+            }
+
+        }, false);
 
         container.appendChild(button);
 
