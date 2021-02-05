@@ -42,8 +42,9 @@ function showCards(numberOf) {
 
         container.appendChild(cards[i]);
 
-    }
 
+    }
+    console.log(cards);
 }
 
 function turnCard(e) {
@@ -105,16 +106,23 @@ function turnCard(e) {
         container.innerHTML = '';
         cardsHit = 0;
 
-        button = document.createElement("BUTTON");
+        button = document.createElement("button");
         button.innerText = "Next lvl";
 
         button.addEventListener("click", function() {
+
+            container.innerHTML = '';
+            // cards.classList.remove("hit");
+            console.log(cards);
+
 
             if(cardsHit1 == 2) {
 
                 let cardsImg1 = img.slice(0, 4);
                     cardsImg2 = [...cardsImg1];
                     cardsImg = cardsImg1.concat(cardsImg2);
+
+                cards.splice(0, cards.length);
 
                 showCards(8);
 
@@ -124,6 +132,8 @@ function turnCard(e) {
                     cardsImg2 = [...cardsImg1];
                     cardsImg = cardsImg1.concat(cardsImg2);
 
+                cards.splice(0, cards.length);
+
                 showCards(12);
 
             } else if(cardsHit1 == 6) {
@@ -131,6 +141,8 @@ function turnCard(e) {
                 let cardsImg1 = img.slice(0, 8);
                     cardsImg2 = [...cardsImg1];
                     cardsImg = cardsImg1.concat(cardsImg2);
+
+                cards.splice(0, cards.length);
 
                 showCards(16);
 
@@ -141,7 +153,7 @@ function turnCard(e) {
         container.appendChild(button);
 
     }
-    console.log(cardsHit);
+    console.log(cardsHit1);
     console.log(button);
 }
 
