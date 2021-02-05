@@ -1,5 +1,6 @@
 let container = document.querySelector(".container"),
-    button = document.querySelector("button"),
+    startButton = document.querySelector("button"),
+    button,
     card,
     cards = [],
     cardsImg = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
@@ -12,7 +13,7 @@ let container = document.querySelector(".container"),
     trials = 0,
     cardsHit = 0;
 
-button.addEventListener("click", howMuchCards, false);
+startButton.addEventListener("click", howMuchCards, false);
 
 function howMuchCards() {
 
@@ -24,7 +25,6 @@ function howMuchCards() {
     showCards(4);
 
 }
-
 
 function showCards(numberOf) {
 
@@ -98,5 +98,18 @@ function turnCard(e) {
 
     }
 
+    if(cardsHit == 2 && 4 && 6) {
+
+        container.innerHTML = '';
+
+        button = document.createElement("BUTTON");
+        button.addEventListener("click", howMuchCards, false);
+        button.innerText = "Next lvl";
+
+        container.appendChild(button);
+
+    }
+    console.log(cardsHit);
+    console.log(button);
 }
 

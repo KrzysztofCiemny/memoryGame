@@ -68,6 +68,6 @@ button {
 .hit {
 
     opacity: 0;
-    cursor: auto;
+    /* cursor: auto; */
     transition: all 0.4s ease-in-out;
 }
