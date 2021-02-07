@@ -1,10 +1,8 @@
 let container = document.querySelector(".container"),
     startButton = document.querySelector("button"),
     button,
-    card,
     cards = [],
     img = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
-    shuffleCardsImg = [],
     turnCardCalls = 0,
     firstCardImg,
     secondCardImg,
@@ -16,9 +14,9 @@ let container = document.querySelector(".container"),
     cardsHit2 = 0,
     cardsHit3 = 0;
 
-startButton.addEventListener("click", howMuchCards, false);
+startButton.addEventListener("click", startingCards, false);
 
-function howMuchCards() {
+function startingCards() {
 
     let cardsImg1 = img.slice(0, 2);
         cardsImg2 = [...cardsImg1];
@@ -36,7 +34,7 @@ function showCards(numberOf) {
 
     for (let i = 0; i < numberOf; i++) {
 
-        card = document.createElement("div");
+        let card = document.createElement("div");
 
         card.classList.add("card");
         card.addEventListener("click", turnCard, false);
@@ -44,7 +42,6 @@ function showCards(numberOf) {
         cards.push(card);
 
         container.appendChild(cards[i]);
-
 
     }
     console.log(cards);
@@ -105,6 +102,12 @@ function turnCard(e) {
         trialsCounter.innerHTML = "trials: " + trials;
 
     }
+
+    nextLevel();
+
+}
+
+function nextLevel() {
 
     if(cardsHit == 2) {
 
@@ -206,18 +209,14 @@ function turnCard(e) {
         button.addEventListener("click", function() {
 
             container.innerHTML = '';
+            cards.splice(0, cards.length);
 
-
-            howMuchCards();
+            startingCards();
 
         }, false);
 
         container.appendChild(button);
 
     }
-    console.log(cardsHit);
-    console.log(cardsHit1);
-    console.log(cardsHit2);
-    console.log(cardsHit3);
-}
 
+}
