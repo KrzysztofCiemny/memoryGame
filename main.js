@@ -12,7 +12,9 @@ let container = document.querySelector(".container"),
     target2,
     trials = 0,
     cardsHit = 0,
-    cardsHit1 = 0;
+    cardsHit1 = 0,
+    cardsHit2 = 0,
+    cardsHit3 = 0;
 
 startButton.addEventListener("click", howMuchCards, false);
 
@@ -23,6 +25,7 @@ function howMuchCards() {
         cardsImg = cardsImg1.concat(cardsImg2);
 
     container.textContent = '';
+
     showCards(4);
 
 }
@@ -82,6 +85,8 @@ function turnCard(e) {
 
             cardsHit++;
             cardsHit1++;
+            cardsHit2++;
+            cardsHit3++;
 
         } else {
 
@@ -101,10 +106,41 @@ function turnCard(e) {
 
     }
 
-    if(cardsHit == 2 && 4 && 6) {
+    if(cardsHit == 2) {
 
         container.innerHTML = '';
-        cardsHit = 0;
+        cardsHit = -3;
+        cardsHit1 = 0;
+        cardsHit2 = 0;
+        cardsHit3 = 0;
+
+        button = document.createElement("button");
+        button.innerText = "Next lvl";
+
+        button.addEventListener("click", function() {
+
+            container.innerHTML = '';
+            // cards.classList.remove("hit");
+
+            let cardsImg1 = img.slice(0, 4);
+                cardsImg2 = [...cardsImg1];
+                cardsImg = cardsImg1.concat(cardsImg2);
+
+            cards.splice(0, cards.length);
+
+            showCards(8);
+
+        }, false);
+
+        container.appendChild(button);
+
+    } else if(cardsHit1 == 4) {
+
+        container.innerHTML = '';
+        cardsHit = -5;
+        cardsHit1 = -3;
+        cardsHit2 = 0;
+        cardsHit3 = 0;
 
         button = document.createElement("button");
         button.innerText = "Next lvl";
@@ -115,45 +151,73 @@ function turnCard(e) {
             // cards.classList.remove("hit");
             console.log(cards);
 
+            let cardsImg1 = img.slice(0, 6);
+                cardsImg2 = [...cardsImg1];
+                cardsImg = cardsImg1.concat(cardsImg2);
 
-            if(cardsHit1 == 2) {
+            cards.splice(0, cards.length);
 
-                let cardsImg1 = img.slice(0, 4);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+            showCards(12);
 
-                cards.splice(0, cards.length);
+        }, false);
 
-                showCards(8);
+        container.appendChild(button);
 
-            } else if(cardsHit1 == 4) {
+    } else if(cardsHit2 == 6) {
 
-                let cardsImg1 = img.slice(0, 6);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+        container.innerHTML = '';
+        cardsHit = -7;
+        cardsHit1 = -5;
+        cardsHit2 = -3;
+        cardsHit3 = 0;
 
-                cards.splice(0, cards.length);
+        button = document.createElement("button");
+        button.innerText = "Next lvl";
 
-                showCards(12);
+        button.addEventListener("click", function() {
 
-            } else if(cardsHit1 == 6) {
+            container.innerHTML = '';
+            // cards.classList.remove("hit");
+            console.log(cards);
 
-                let cardsImg1 = img.slice(0, 8);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+            let cardsImg1 = img.slice(0, img.length);
+                cardsImg2 = [...cardsImg1];
+                cardsImg = cardsImg1.concat(cardsImg2);
 
-                cards.splice(0, cards.length);
+            cards.splice(0, cards.length);
 
-                showCards(16);
+            showCards(16);
 
-            }
+        }, false);
+
+        container.appendChild(button);
+
+    } else if(cardsHit3 == 8) {
+
+        container.innerHTML = '';
+        cardsHit = 0;
+        cardsHit1 = 0;
+        cardsHit2 = 0;
+        cardsHit3 = 0;
+
+        button = document.createElement("button");
+        button.innerText = "once more?";
+
+        button.addEventListener("click", function() {
+
+            container.innerHTML = '';
+
+
+            howMuchCards();
 
         }, false);
 
         container.appendChild(button);
 
     }
+    console.log(cardsHit);
     console.log(cardsHit1);
-    console.log(button);
+    console.log(cardsHit2);
+    console.log(cardsHit3);
 }
 
