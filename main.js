@@ -30,7 +30,7 @@ function startingCards() {
 
 function showCards(numberOf) {
 
-    // shuffleCardsImg = cardsImg.sort(() => Math.random() - 0.5);
+    cardsImg.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < numberOf; i++) {
 
@@ -44,7 +44,7 @@ function showCards(numberOf) {
         container.appendChild(cards[i]);
 
     }
-    console.log(cards);
+
 }
 
 function turnCard(e) {
@@ -59,11 +59,13 @@ function turnCard(e) {
 
         firstCardImg = target.style.backgroundImage = cardsImg[index];
         target1 = target;
+        target1.removeEventListener("click", turnCard, false);
 
     } else if (turnCardCalls == 2) {
 
         secondCardImg = target.style.backgroundImage = cardsImg[index];
         target2 = target;
+        target2.removeEventListener("click", turnCard, false);
 
 
         if (firstCardImg == secondCardImg) {
@@ -73,8 +75,8 @@ function turnCard(e) {
                 target1.classList.add("hit");
                 target2.classList.add("hit");
 
-                target1.removeEventListener("click", turnCard, false);
-                target2.removeEventListener("click", turnCard, false);
+                // target1.removeEventListener("click", turnCard, false);
+                // target2.removeEventListener("click", turnCard, false);
 
                 turnCardCalls = 0;
 
@@ -91,6 +93,9 @@ function turnCard(e) {
 
                 target1.style.backgroundImage = null;
                 target2.style.backgroundImage = null;
+
+                target1.addEventListener("click", turnCard, false);
+                target2.addEventListener("click", turnCard, false);
 
                 turnCardCalls = 0;
 
