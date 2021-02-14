@@ -1,5 +1,6 @@
 let container = document.querySelector(".container"),
     startButton = document.querySelector("button"),
+    text,
     button,
     cards = [],
     img = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
@@ -13,6 +14,8 @@ let container = document.querySelector(".container"),
     cardsHit1 = 0,
     cardsHit2 = 0,
     cardsHit3 = 0;
+    praises = ["Gratulacje!", "Udało Ci się!", "Super!", "Ekstra!", "Niesamowite!", "Jesteś genialny!", "Lecisz jak szalony!", "Oby tak dalej!"];
+
 
 startButton.addEventListener("click", startingCards, false);
 
@@ -122,6 +125,11 @@ function nextLevel() {
         cardsHit2 = 0;
         cardsHit3 = 0;
 
+        praises.sort(() => Math.random() - 0.5);
+
+        text = document.createElement("span");
+        text.innerHTML = praises[1];
+
         button = document.createElement("button");
         button.innerText = "Next lvl";
 
@@ -140,6 +148,7 @@ function nextLevel() {
 
         }, false);
 
+        container.appendChild(text);
         container.appendChild(button);
 
     } else if(cardsHit1 == 4) {
@@ -149,6 +158,11 @@ function nextLevel() {
         cardsHit1 = -3;
         cardsHit2 = 0;
         cardsHit3 = 0;
+
+        praises.sort(() => Math.random() - 0.5);
+
+        text = document.createElement("span");
+        text.innerHTML = praises[1];
 
         button = document.createElement("button");
         button.innerText = "Next lvl";
@@ -169,6 +183,7 @@ function nextLevel() {
 
         }, false);
 
+        container.appendChild(text);
         container.appendChild(button);
 
     } else if(cardsHit2 == 6) {
@@ -178,6 +193,11 @@ function nextLevel() {
         cardsHit1 = -5;
         cardsHit2 = -3;
         cardsHit3 = 0;
+
+        praises.sort(() => Math.random() - 0.5);
+
+        text = document.createElement("span");
+        text.innerHTML = praises[1];
 
         button = document.createElement("button");
         button.innerText = "Next lvl";
@@ -198,6 +218,7 @@ function nextLevel() {
 
         }, false);
 
+        container.appendChild(text);
         container.appendChild(button);
 
     } else if(cardsHit3 == 8) {
@@ -207,6 +228,11 @@ function nextLevel() {
         cardsHit1 = 0;
         cardsHit2 = 0;
         cardsHit3 = 0;
+
+        praises.sort(() => Math.random() - 0.5);
+
+        text = document.createElement("span");
+        text.innerHTML = praises[1];
 
         button = document.createElement("button");
         button.innerText = "once more?";
@@ -220,6 +246,7 @@ function nextLevel() {
 
         }, false);
 
+        container.appendChild(text);
         container.appendChild(button);
 
     }
