@@ -63,7 +63,15 @@ button {
     background-color: rgb(19, 105, 155);
     display: inline-block;
     cursor: pointer;
+    position: relative;
+    /* transition: 0.6s transform linear; */
 }
+
+/* .card.card-flipped {
+
+    transform: rotateY(180deg);
+
+} */
 
 .hit {
 
