@@ -1,5 +1,8 @@
 let container = document.querySelector(".container"),
     startButton = document.querySelector("button"),
+    timer = document.querySelector("#timer"),
+    time = 0,
+    timeout,
     text,
     button,
     cards = [],
@@ -13,7 +16,7 @@ let container = document.querySelector(".container"),
     cardsHit = 0,
     cardsHit1 = 0,
     cardsHit2 = 0,
-    cardsHit3 = 0;
+    cardsHit3 = 0,
     praises = ["Gratulacje!", "Udało Ci się!", "Super!", "Ekstra!", "Niesamowite!", "Jesteś genialny!", "Lecisz jak szalony!", "Oby tak dalej!"];
 
 
@@ -26,8 +29,12 @@ function startingCards() {
         cardsImg = cardsImg1.concat(cardsImg2);
 
     container.textContent = '';
+    // cards.splice(0, cards.length);
 
     showCards(4);
+
+    time = 16;
+    timerStart();
 
 }
 
@@ -80,9 +87,6 @@ function turnCard(e) {
                 target1.classList.add("hit");
                 target2.classList.add("hit");
 
-                // target1.removeEventListener("click", turnCard, false);
-                // target2.removeEventListener("click", turnCard, false);
-
                 turnCardCalls = 0;
 
             }, 300);
@@ -109,7 +113,6 @@ function turnCard(e) {
         }
 
         trials++;
-        // trialsCounter.innerHTML = "trials: " + trials;
 
     }
 
@@ -120,6 +123,8 @@ function turnCard(e) {
 function nextLevel() {
 
     if(cardsHit == 2) {
+
+        clearTimeout(timeout);
 
         container.innerHTML = '';
         cardsHit = -3;
@@ -138,7 +143,6 @@ function nextLevel() {
         button.addEventListener("click", function() {
 
             container.innerHTML = '';
-            // cards.classList.remove("hit");
 
             let cardsImg1 = img.slice(0, 4);
                 cardsImg2 = [...cardsImg1];
@@ -148,6 +152,9 @@ function nextLevel() {
 
             showCards(8);
 
+            time = 31;
+            timerStart();
+
         }, false);
 
         container.appendChild(text);
@@ -156,6 +163,8 @@ function nextLevel() {
         trials = 0;
 
     } else if(cardsHit1 == 4) {
+
+        clearTimeout(timeout);
 
         container.innerHTML = '';
         cardsHit = -5;
@@ -174,8 +183,6 @@ function nextLevel() {
         button.addEventListener("click", function() {
 
             container.innerHTML = '';
-            // cards.classList.remove("hit");
-            console.log(cards);
 
             let cardsImg1 = img.slice(0, 6);
                 cardsImg2 = [...cardsImg1];
@@ -185,6 +192,9 @@ function nextLevel() {
 
             showCards(12);
 
+            time = 46;
+            timerStart();
+
         }, false);
 
         container.appendChild(text);
@@ -193,6 +203,8 @@ function nextLevel() {
         trials = 0;
 
     } else if(cardsHit2 == 6) {
+
+        clearTimeout(timeout);
 
         container.innerHTML = '';
         cardsHit = -7;
@@ -211,8 +223,6 @@ function nextLevel() {
         button.addEventListener("click", function() {
 
             container.innerHTML = '';
-            // cards.classList.remove("hit");
-            console.log(cards);
 
             let cardsImg1 = img.slice(0, img.length);
                 cardsImg2 = [...cardsImg1];
@@ -222,6 +232,9 @@ function nextLevel() {
 
             showCards(16);
 
+            time = 61;
+            timerStart();
+
         }, false);
 
         container.appendChild(text);
@@ -230,6 +243,8 @@ function nextLevel() {
         trials = 0;
 
     } else if(cardsHit3 == 8) {
+
+        clearTimeout(timeout);
 
         container.innerHTML = '';
         cardsHit = 0;
@@ -261,4 +276,49 @@ function nextLevel() {
 
     }
 
+}
+
+function timerStart() {
+
+    if(time > 0) {
+
+        time--;
+        timer.innerHTML = "Time: " + time;
+        timeout = setTimeout(timerStart, 1000);
+
+    } else {
+
+        for (let i = 0; i < cards.length; i++){
+
+            cards[i].classList.add("hit");
+
+        }
+
+        setTimeout (function() {
+
+            container.innerHTML = '';
+
+            text = document.createElement("span");
+            text.innerText = "Koniec czasu! Spróbujesz jeszcze raz?";
+
+            button = document.createElement("button");
+            button.innerText = "Again!";
+
+            button.addEventListener("click", function() {
+
+                container.innerHTML = '';
+                cards.splice(0, cards.length);
+
+                startingCards()
+
+            }, false);
+
+            container.appendChild(text);
+            container.appendChild(button);
+
+        }, 400);
+
+    }
+
+console.log(time);
 }
