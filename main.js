@@ -29,7 +29,6 @@ function startingCards() {
         cardsImg = cardsImg1.concat(cardsImg2);
 
     container.textContent = '';
-    // cards.splice(0, cards.length);
 
     showCards(4);
 
@@ -44,10 +43,18 @@ function showCards(numberOf) {
 
     for (let i = 0; i < numberOf; i++) {
 
-        let card = document.createElement("div");
+        let card = document.createElement("div"),
+            front = document.createElement("div"),
+            back = document.createElement("div");
 
         card.classList.add("card");
+        front.classList.add("front");
+        back.classList.add("back");
+
         card.addEventListener("click", turnCard, false);
+
+        card.appendChild(front);
+        card.appendChild(back);
 
         cards.push(card);
 
@@ -59,24 +66,24 @@ function showCards(numberOf) {
 
 function turnCard(e) {
 
-    let target = e.target,
-        index = cards.indexOf(target),
-        trialsCounter = document.querySelector("#trial");
+    let index = cards.indexOf(this);
+
+    this.classList.add("flip");
 
     turnCardCalls++;
 
     if (turnCardCalls == 1) {
 
-        // target.classList.add("card-flipped");
-        firstCardImg = target.style.backgroundImage = cardsImg[index];
-        target1 = target;
+        target1 = this;
+        firstCardImg = target1.lastChild.style.backgroundImage = cardsImg[index];
+
         target1.removeEventListener("click", turnCard, false);
 
     } else if (turnCardCalls == 2) {
 
-        // target.classList.add("card-flipped");
-        secondCardImg = target.style.backgroundImage = cardsImg[index];
-        target2 = target;
+        target2 = this;
+        secondCardImg = target2.lastChild.style.backgroundImage = cardsImg[index];
+
         target2.removeEventListener("click", turnCard, false);
 
 
@@ -100,8 +107,11 @@ function turnCard(e) {
 
             setTimeout(function() {
 
-                target1.style.backgroundImage = null;
-                target2.style.backgroundImage = null;
+                // target1.style.backgroundImage = null;
+                // target2.style.backgroundImage = null;
+
+                target1.classList.remove("flip");
+                target2.classList.remove("flip");
 
                 target1.addEventListener("click", turnCard, false);
                 target2.addEventListener("click", turnCard, false);
@@ -278,47 +288,46 @@ function nextLevel() {
 
 }
 
-function timerStart() {
+// function timerStart() {
 
-    if(time > 0) {
+//     if(time > 0) {
 
-        time--;
-        timer.innerHTML = "Time: " + time;
-        timeout = setTimeout(timerStart, 1000);
+//         time--;
+//         timer.innerHTML = "Time: " + time;
+//         timeout = setTimeout(timerStart, 1000);
 
-    } else {
+//     } else {
 
-        for (let i = 0; i < cards.length; i++){
+//         for (let i = 0; i < cards.length; i++){
 
-            cards[i].classList.add("hit");
+//             cards[i].classList.add("hit");
 
-        }
+//         }
 
-        setTimeout (function() {
+//         setTimeout (function() {
 
-            container.innerHTML = '';
+//             container.innerHTML = '';
 
-            text = document.createElement("span");
-            text.innerText = "Koniec czasu! Spróbujesz jeszcze raz?";
+//             text = document.createElement("span");
+//             text.innerText = "Koniec czasu! Spróbujesz jeszcze raz?";
 
-            button = document.createElement("button");
-            button.innerText = "Again!";
+//             button = document.createElement("button");
+//             button.innerText = "Again!";
 
-            button.addEventListener("click", function() {
+//             button.addEventListener("click", function() {
 
-                container.innerHTML = '';
-                cards.splice(0, cards.length);
+//                 container.innerHTML = '';
+//                 cards.splice(0, cards.length);
 
-                startingCards()
+//                 startingCards()
 
-            }, false);
+//             }, false);
 
-            container.appendChild(text);
-            container.appendChild(button);
+//             container.appendChild(text);
+//             container.appendChild(button);
 
-        }, 400);
+//         }, 400);
 
-    }
+//     }
 
-console.log(time);
-}
+// }

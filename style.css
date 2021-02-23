@@ -55,27 +55,59 @@ button {
 
 .card {
 
+    position: relative;
+
     width: 280px;
     height: 220px;
-    margin: 10px;
+    margin: 6px;
     border-radius: 10px;
 
-    background-color: rgb(19, 105, 155);
     display: inline-block;
+
     cursor: pointer;
-    position: relative;
-    /* transition: 0.6s transform linear; */
+
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+
 }
 
-/* .card.card-flipped {
+.card.flip {
 
     transform: rotateY(180deg);
 
-} */
+}
+
+.front {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #ffc728;
+
+    backface-visibility: hidden;
+
+}
+
+.back {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #3f0f0f;
+
+
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+
+}
 
 .hit {
 
     opacity: 0;
     cursor: auto;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
