@@ -12,6 +12,8 @@ let container = document.querySelector(".container"),
     secondCardImg,
     target1,
     target2,
+    index1,
+    index2,
     trials = 0,
     cardsHit = 0,
     cardsHit1 = 0,
@@ -39,7 +41,7 @@ function startingCards() {
 
 function showCards(numberOf) {
 
-    cardsImg.sort(() => Math.random() - 0.5);
+    // cardsImg.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < numberOf; i++) {
 
@@ -66,11 +68,11 @@ function showCards(numberOf) {
 
 function turnCard(e) {
 
+    turnCardCalls++;
+
     let index = cards.indexOf(this);
 
     this.classList.add("flip");
-
-    turnCardCalls++;
 
     if (turnCardCalls == 1) {
 
@@ -81,11 +83,16 @@ function turnCard(e) {
 
     } else if (turnCardCalls == 2) {
 
+        for(i = 0; i < cards.length; i++) {
+
+            cards[i].removeEventListener("click", turnCard, false);
+
+        }
+
         target2 = this;
         secondCardImg = target2.lastChild.style.backgroundImage = cardsImg[index];
 
         target2.removeEventListener("click", turnCard, false);
-
 
         if (firstCardImg == secondCardImg) {
 
@@ -97,6 +104,16 @@ function turnCard(e) {
                 turnCardCalls = 0;
 
             }, 300);
+
+            setTimeout(function() {
+
+                for(i = 0; i < cards.length; i++) {
+
+                    cards[i].addEventListener("click", turnCard, false);
+
+                }
+
+            }, 500);
 
             cardsHit++;
             cardsHit1++;
@@ -110,8 +127,11 @@ function turnCard(e) {
                 target1.classList.remove("flip");
                 target2.classList.remove("flip");
 
-                target1.addEventListener("click", turnCard, false);
-                target2.addEventListener("click", turnCard, false);
+                for(i = 0; i < cards.length; i++) {
+
+                    cards[i].addEventListener("click", turnCard, false);
+
+                }
 
                 turnCardCalls = 0;
 
