@@ -91,12 +91,16 @@ function turnCard(e) {
 
             setTimeout(function() {
 
-                target1.classList.add("hit");
-                target2.classList.add("hit");
+                target1.lastChild.classList.add("hit");
+                target2.lastChild.classList.add("hit");
+                console.log(target1);
+                console.log(target2);
 
                 turnCardCalls = 0;
 
             }, 300);
+
+
 
             cardsHit++;
             cardsHit1++;
