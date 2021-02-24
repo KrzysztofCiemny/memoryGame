@@ -93,14 +93,10 @@ function turnCard(e) {
 
                 target1.lastChild.classList.add("hit");
                 target2.lastChild.classList.add("hit");
-                console.log(target1);
-                console.log(target2);
 
                 turnCardCalls = 0;
 
             }, 300);
-
-
 
             cardsHit++;
             cardsHit1++;
@@ -110,9 +106,6 @@ function turnCard(e) {
         } else {
 
             setTimeout(function() {
-
-                // target1.style.backgroundImage = null;
-                // target2.style.backgroundImage = null;
 
                 target1.classList.remove("flip");
                 target2.classList.remove("flip");
@@ -138,155 +131,171 @@ function nextLevel() {
 
     if(cardsHit == 2) {
 
-        clearTimeout(timeout);
+        setTimeout(function() {
 
-        container.innerHTML = '';
-        cardsHit = -3;
-        cardsHit1 = 0;
-        cardsHit2 = 0;
-        cardsHit3 = 0;
-
-        praises.sort(() => Math.random() - 0.5);
-
-        text = document.createElement("span");
-        text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
-
-        button = document.createElement("button");
-        button.innerText = "Next lvl";
-
-        button.addEventListener("click", function() {
+            clearTimeout(timeout);
 
             container.innerHTML = '';
+            cardsHit = -3;
+            cardsHit1 = 0;
+            cardsHit2 = 0;
+            cardsHit3 = 0;
 
-            let cardsImg1 = img.slice(0, 4);
-                cardsImg2 = [...cardsImg1];
-                cardsImg = cardsImg1.concat(cardsImg2);
+            praises.sort(() => Math.random() - 0.5);
 
-            cards.splice(0, cards.length);
+            text = document.createElement("span");
+            text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
 
-            showCards(8);
+            button = document.createElement("button");
+            button.innerText = "Next lvl";
 
-            time = 31;
-            timerStart();
+            button.addEventListener("click", function() {
 
-        }, false);
+                container.innerHTML = '';
 
-        container.appendChild(text);
-        container.appendChild(button);
+                let cardsImg1 = img.slice(0, 4);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
-        trials = 0;
+                cards.splice(0, cards.length);
+
+                showCards(8);
+
+                time = 31;
+                timerStart();
+
+            }, false);
+
+            container.appendChild(text);
+            container.appendChild(button);
+
+            trials = 0;
+
+        }, 600);
 
     } else if(cardsHit1 == 4) {
 
-        clearTimeout(timeout);
+        setTimeout(function() {
 
-        container.innerHTML = '';
-        cardsHit = -5;
-        cardsHit1 = -3;
-        cardsHit2 = 0;
-        cardsHit3 = 0;
-
-        praises.sort(() => Math.random() - 0.5);
-
-        text = document.createElement("span");
-        text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
-
-        button = document.createElement("button");
-        button.innerText = "Next lvl";
-
-        button.addEventListener("click", function() {
+            clearTimeout(timeout);
 
             container.innerHTML = '';
+            cardsHit = -5;
+            cardsHit1 = -3;
+            cardsHit2 = 0;
+            cardsHit3 = 0;
 
-            let cardsImg1 = img.slice(0, 6);
-                cardsImg2 = [...cardsImg1];
-                cardsImg = cardsImg1.concat(cardsImg2);
+            praises.sort(() => Math.random() - 0.5);
 
-            cards.splice(0, cards.length);
+            text = document.createElement("span");
+            text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
 
-            showCards(12);
+            button = document.createElement("button");
+            button.innerText = "Next lvl";
 
-            time = 46;
-            timerStart();
+            button.addEventListener("click", function() {
 
-        }, false);
+                container.innerHTML = '';
 
-        container.appendChild(text);
-        container.appendChild(button);
+                let cardsImg1 = img.slice(0, 6);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
-        trials = 0;
+                cards.splice(0, cards.length);
+
+                showCards(12);
+
+                time = 46;
+                timerStart();
+
+            }, false);
+
+            container.appendChild(text);
+            container.appendChild(button);
+
+            trials = 0;
+
+        }, 600);
 
     } else if(cardsHit2 == 6) {
 
-        clearTimeout(timeout);
+        setTimeout(function() {
 
-        container.innerHTML = '';
-        cardsHit = -7;
-        cardsHit1 = -5;
-        cardsHit2 = -3;
-        cardsHit3 = 0;
-
-        praises.sort(() => Math.random() - 0.5);
-
-        text = document.createElement("span");
-        text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
-
-        button = document.createElement("button");
-        button.innerText = "Next lvl";
-
-        button.addEventListener("click", function() {
+            clearTimeout(timeout);
 
             container.innerHTML = '';
+            cardsHit = -7;
+            cardsHit1 = -5;
+            cardsHit2 = -3;
+            cardsHit3 = 0;
 
-            let cardsImg1 = img.slice(0, img.length);
-                cardsImg2 = [...cardsImg1];
-                cardsImg = cardsImg1.concat(cardsImg2);
+            praises.sort(() => Math.random() - 0.5);
 
-            cards.splice(0, cards.length);
+            text = document.createElement("span");
+            text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
 
-            showCards(16);
+            button = document.createElement("button");
+            button.innerText = "Next lvl";
 
-            time = 61;
-            timerStart();
+            button.addEventListener("click", function() {
 
-        }, false);
+                container.innerHTML = '';
 
-        container.appendChild(text);
-        container.appendChild(button);
+                let cardsImg1 = img.slice(0, img.length);
+                    cardsImg2 = [...cardsImg1];
+                    cardsImg = cardsImg1.concat(cardsImg2);
 
-        trials = 0;
+                cards.splice(0, cards.length);
+
+                showCards(16);
+
+                time = 61;
+                timerStart();
+
+            }, false);
+
+            container.appendChild(text);
+            container.appendChild(button);
+
+            trials = 0;
+
+        }, 600);
 
     } else if(cardsHit3 == 8) {
 
-        clearTimeout(timeout);
+        setTimeout(function() {
 
-        container.innerHTML = '';
-        cardsHit = 0;
-        cardsHit1 = 0;
-        cardsHit2 = 0;
-        cardsHit3 = 0;
-
-        praises.sort(() => Math.random() - 0.5);
-
-        text = document.createElement("span");
-        text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
-
-        button = document.createElement("button");
-        button.innerText = "once more?";
-
-        button.addEventListener("click", function() {
+            clearTimeout(timeout);
 
             container.innerHTML = '';
-            cards.splice(0, cards.length);
+            cardsHit = 0;
+            cardsHit1 = 0;
+            cardsHit2 = 0;
+            cardsHit3 = 0;
 
-            startingCards();
+            praises.sort(() => Math.random() - 0.5);
 
-        }, false);
+            text = document.createElement("span");
+            text.innerText = praises[1] + " Potrzebowałeś zaledwie " + trials + " prób!";
 
-        container.appendChild(text);
-        container.appendChild(button);
+            button = document.createElement("button");
+            button.innerText = "once more?";
 
-        trials = 0;
+            button.addEventListener("click", function() {
+
+                container.innerHTML = '';
+                cards.splice(0, cards.length);
+
+                startingCards();
+
+            }, false);
+
+            container.appendChild(text);
+            container.appendChild(button);
+
+            trials = 0;
+
+        }, 600);
 
     }
 
