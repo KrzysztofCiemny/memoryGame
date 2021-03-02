@@ -1,7 +1,15 @@
-body {
+* {
 
     margin: 0;
     padding: 0;
+
+}
+
+body {
+
+    background: linear-gradient(to right, #000000, #033f77);
+    width: 100%;
+    min-height: 100vh;
 
 }
 
@@ -26,11 +34,11 @@ button {
 
 .title {
 
-    width: 70%;
-    font-size: 50px;
+    width: 84%;
+    font-size: 40px;
     text-transform: uppercase;
     font-weight: 700;
-    color:cornflowerblue;
+    color:whitesmoke;
     display: inline-block;
 
 }
@@ -42,6 +50,7 @@ button {
     text-align: left;
     font-size: 30px;
     text-transform: uppercase;
+    color:whitesmoke;
 
 }
 
