@@ -6,7 +6,9 @@ let container = document.querySelector(".container"),
     text,
     button,
     cards = [],
-    img = ["url('img/kata.png')", "url('img/lucian.png')", "url('img/ahri.jpg')", "url('img/ashe.jpg')", "url('img/nida.jpg')", "url('img/riven.jpg')", "url('img/sol.jpg')", "url('img/yasuo.jpg')"],
+    // img = ["url('img/lol/kata.png')", "url('img/lol/lucian.png')", "url('img/lol/ahri.jpg')", "url('img/lol/ashe.jpg')", "url('img/lol/nida.jpg')", "url('img/lol/riven.jpg')", "url('img/lol/sol.jpg')", "url('img/lol/yasuo.jpg')"],
+    img = ["url('img/miraculum/kot.png')", "url('img/miraculum/all.png')", "url('img/miraculum/lisek.png')", "url('img/miraculum/marinet.jpg')", "url('img/miraculum/plagg.jpg')", "url('img/miraculum/pszczola.png')", "url('img/miraculum/titsi.png')", "url('img/miraculum/wladca.png')"],
+    containerForImages,
     turnCardCalls = 0,
     firstCardImg,
     secondCardImg,
@@ -21,52 +23,52 @@ let container = document.querySelector(".container"),
     cardsHit3 = 0,
     praises = ["Gratulacje!", "Udało Ci się!", "Super!", "Ekstra!", "Niesamowite!", "Jesteś genialny!", "Lecisz jak szalony!", "Oby tak dalej!"];
 
-startButton.addEventListener("click", startingCards, false);
+const
+    FROM_FIRST_CARD = 0,
+    TO_SECOND_CARD = 2,
+    FIRST_LEVEL_CARDS = 4,
+    SECOND_LEVEL_CARDS = 8,
+    THIRD_LEVEL_CARDS = 12,
+    FOURTH_LEVEL_CARDS = 16,
+    FIRST_LEVEL_ITERATION = 1,
+    SECOND_LEVEL_ITERATION = 3,
+    THIRD_LEVEL_ITERATION = 5,
+    FOURTH_LEVEL_ITERATION = 7;
 
-function startingCards() {
+startButton.addEventListener("click", startGame, false);
 
-    let cardsImg1 = img.slice(0, 2);
-        cardsImg2 = [...cardsImg1];
-        cardsImg = cardsImg1.concat(cardsImg2);
-
-    container.textContent = '';
-
-    const howManyCards = 4,
-          whichIteration = 1;
-    showCards(howManyCards, whichIteration);
+function startGame() {
+    startingCards();
+    showCards(FIRST_LEVEL_CARDS, FIRST_LEVEL_ITERATION);
 
     time = 16;
     timerStart();
 }
 
+function startingCards() {
+    let twoFirstCards = img.slice(FROM_FIRST_CARD, TO_SECOND_CARD),
+        copyOfTwoFirstCards = [...twoFirstCards];
+
+    containerForImages = [].concat(twoFirstCards, copyOfTwoFirstCards);
+
+    container.textContent = '';
+}
+
 function showCards(howManyCards, whichIteration) {
 
     const cardsContainer = document.createElement("div");
-
     cardsContainer.classList.add("cardsContainer");
 
-    // cardsImg.sort(() => Math.random() - 0.5);
+    containerForImages.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < howManyCards; i++) {
-
-        let card = document.createElement("div"),
-            front = document.createElement("div"),
-            back = document.createElement("div");
-
-        card.classList.add("card");
-        front.classList.add("front");
-        back.classList.add("back");
-
-        card.addEventListener("click", turnCard, false);
-
-        card.appendChild(front);
-        card.appendChild(back);
-
+        let card = createCard();
         cards.push(card);
-        cardsContainer.appendChild(cards[i]);
+        cardsContainer.appendChild(card);
         container.appendChild(cardsContainer);
 
-        if(i==whichIteration) {
+        let nowaLiczba = howManyCards; // musi byc takie jak bylo whichIteration
+        if (i === nowaLiczba) {
 
             const goToNextLine = document.createElement("div");
             goToNextLine.style.clear = "both";
@@ -75,6 +77,23 @@ function showCards(howManyCards, whichIteration) {
 
         }
     }
+
+}
+
+function createCard() {
+    let card = document.createElement("div"),
+        front = document.createElement("div"),
+        back = document.createElement("div");
+
+    card.classList.add("card");
+    front.classList.add("front");
+    back.classList.add("back");
+
+    card.addEventListener("click", turnCard, false);
+
+    card.appendChild(front);
+    card.appendChild(back);
+    return card;
 }
 
 // function turnCard() {
@@ -182,26 +201,26 @@ function turnCard() {
     if (turnCardCalls == 1) {
 
         target1 = this;
-        firstCardImg = target1.lastChild.style.backgroundImage = cardsImg[index];
+        firstCardImg = target1.lastChild.style.backgroundImage = containerForImages[index];
 
         target1.removeEventListener("click", turnCard, false);
 
     } else if (turnCardCalls == 2) {
 
-        for(i = 0; i < cards.length; i++) {
+        for (i = 0; i < cards.length; i++) {
 
             cards[i].removeEventListener("click", turnCard, false);
 
         }
 
         target2 = this;
-        secondCardImg = target2.lastChild.style.backgroundImage = cardsImg[index];
+        secondCardImg = target2.lastChild.style.backgroundImage = containerForImages[index];
 
         target2.removeEventListener("click", turnCard, false);
 
         if (firstCardImg === secondCardImg) {
 
-            setTimeout(function() {
+            setTimeout(function () {
 
                 target1.lastChild.classList.add("hit");
                 target2.lastChild.classList.add("hit");
@@ -210,9 +229,9 @@ function turnCard() {
 
             }, 300);
 
-            setTimeout(function() {
+            setTimeout(function () {
 
-                for(i = 0; i < cards.length; i++) {
+                for (i = 0; i < cards.length; i++) {
 
                     cards[i].addEventListener("click", turnCard, false);
 
@@ -230,12 +249,12 @@ function turnCard() {
 
         } else {
 
-            setTimeout(function() {
+            setTimeout(function () {
 
                 target1.classList.remove("flip");
                 target2.classList.remove("flip");
 
-                for(i = 0; i < cards.length; i++) {
+                for (i = 0; i < cards.length; i++) {
 
                     cards[i].addEventListener("click", turnCard, false);
 
@@ -257,9 +276,9 @@ function turnCard() {
 
 function nextLevel() {
 
-    if(cardsHit == 2) {
+    if (cardsHit == 2) {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             clearTimeout(timeout);
 
@@ -281,19 +300,18 @@ function nextLevel() {
             button = document.createElement("button");
             button.innerText = "Next lvl";
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
 
                 container.innerHTML = '';
 
                 let cardsImg1 = img.slice(0, 4);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+                cardsImg2 = [...cardsImg1];
+                containerForImages = cardsImg1.concat(cardsImg2);
 
                 cards.splice(0, cards.length);
 
-                const howManyCards = 8,
-                      whichIteration = 3;
-                showCards(howManyCards, whichIteration);
+
+                showCards(SECOND_LEVEL_CARDS, SECOND_LEVEL_ITERATION);
 
                 time = 31;
                 timerStart();
@@ -308,9 +326,9 @@ function nextLevel() {
 
         }, 600);
 
-    } else if(cardsHit1 == 4) {
+    } else if (cardsHit1 == 4) {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             clearTimeout(timeout);
 
@@ -332,19 +350,18 @@ function nextLevel() {
             button = document.createElement("button");
             button.innerText = "Next lvl";
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
 
                 container.innerHTML = '';
 
                 let cardsImg1 = img.slice(0, 6);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+                cardsImg2 = [...cardsImg1];
+                containerForImages = cardsImg1.concat(cardsImg2);
 
                 cards.splice(0, cards.length);
 
-                const howManyCards = 12,
-                      whichIteration = 5;
-                showCards(howManyCards, whichIteration);
+
+                showCards(THIRD_LEVEL_CARDS, THIRD_LEVEL_ITERATION);
 
                 time = 46;
                 timerStart();
@@ -359,9 +376,9 @@ function nextLevel() {
 
         }, 600);
 
-    } else if(cardsHit2 == 6) {
+    } else if (cardsHit2 == 6) {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             clearTimeout(timeout);
 
@@ -383,19 +400,18 @@ function nextLevel() {
             button = document.createElement("button");
             button.innerText = "Next lvl";
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
 
                 container.innerHTML = '';
 
                 let cardsImg1 = img.slice(0, img.length);
-                    cardsImg2 = [...cardsImg1];
-                    cardsImg = cardsImg1.concat(cardsImg2);
+                cardsImg2 = [...cardsImg1];
+                containerForImages = cardsImg1.concat(cardsImg2);
 
                 cards.splice(0, cards.length);
 
-                const howManyCards = 16,
-                      whichIteration = 7;
-                showCards(howManyCards, whichIteration);
+
+                showCards(FOURTH_LEVEL_CARDS, FOURTH_LEVEL_ITERATION);
 
                 time = 61;
                 timerStart();
@@ -410,9 +426,9 @@ function nextLevel() {
 
         }, 600);
 
-    } else if(cardsHit3 == 8) {
+    } else if (cardsHit3 == 8) {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             clearTimeout(timeout);
 
@@ -434,7 +450,7 @@ function nextLevel() {
             button = document.createElement("button");
             button.innerText = "once more?";
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
 
                 container.innerHTML = '';
                 cards.splice(0, cards.length);

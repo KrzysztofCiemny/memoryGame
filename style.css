@@ -25,7 +25,7 @@ body {
 .ButtonAndTextContainer {
 
     position: relative;
-    top: 25vh;
+    top: 22vh;
 
 }
 
@@ -103,7 +103,7 @@ button:hover {
 
     /* margin-top: 13vh; */
     position: relative;
-    top: 15vh;
+    top: 12vh;
 
 
 }
@@ -141,7 +141,7 @@ button:hover {
     border-radius: 10px;
 
     border: 1px solid rgb(255, 255, 255);
-    background: linear-gradient(to right, rgb(173, 170, 3), rgba(233, 218, 14, 0.829));
+    background: linear-gradient(to right, rgb(212, 7, 212), rgba(212, 7, 212));
 
     backface-visibility: hidden;
 
